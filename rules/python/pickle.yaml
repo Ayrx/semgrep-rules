@@ -8,6 +8,7 @@ rules:
   patterns:
     - pattern-either:
       - pattern: pickle.$FUNC(...)
+      - pattern: _pickle.$FUNC(...)
       - pattern: cPickle.$FUNC(...)
 
 - id: pickle-shelve
