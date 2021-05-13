@@ -1,0 +1,29 @@
+rules:
+- id: child-process
+  message: |
+    Detected calls to $EXEC() with non-literal variables.
+  severity: WARNING
+  languages:
+  - javascript
+  - typescript
+  patterns:
+    - pattern-either:
+      - pattern: exec($CMD, ...)
+      - pattern: execSync($CMD, ...)
+      - pattern: spawn($CMD, ...)
+      - pattern: spawnSync($CMD, ...)
+      - pattern: execFile($CMD, ...)
+      - pattern: execFileSync($CMD, ...)
+    - pattern-not: exec("...", ...)
+    - pattern-not: execSync("...", ...)
+    - pattern-not: spawn("...", ...)
+    - pattern-not: spawnSync("...", ...)
+    - pattern-not: execFile("...", ...)
+    - pattern-not: execFileSync("...", ...)
+    - pattern-either:
+      - pattern-inside: |
+          require('child_process')
+          ...
+      - pattern-inside: |
+          import 'child_process'
+          ...
