@@ -1,0 +1,8 @@
+rules:
+- id: marshal
+  message: |
+    Detected use of the `marshal` module.
+  severity: WARNING
+  languages:
+  - python
+  pattern: marshal.$FUNC(...)
