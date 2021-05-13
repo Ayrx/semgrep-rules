@@ -1,0 +1,27 @@
+rules:
+- id: pickle-pickle
+  message: |
+    Detected use of the `pickle` module.
+  severity: WARNING
+  languages:
+  - python
+  patterns:
+    - pattern-either:
+      - pattern: pickle.$FUNC(...)
+      - pattern: cPickle.$FUNC(...)
+
+- id: pickle-shelve
+  message: |
+    Detected use of the `shelve` module.
+  severity: WARNING
+  languages:
+  - python
+  pattern: shelve.$FUNC(...)
+
+- id: pickle-dill
+  message: |
+    Detected use of the `dill` module.
+  severity: WARNING
+  languages:
+  - python
+  pattern: dill.$FUNC(...)
