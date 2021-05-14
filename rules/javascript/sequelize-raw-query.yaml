@@ -1,0 +1,11 @@
+rules:
+- id: sequelize-raw-query
+  message: |
+    Detected non-literal calls $DB.sequelize.query() which could result in SQL injection.
+  severity: WARNING
+  languages:
+  - javascript
+  - typescript
+  patterns:
+    - pattern: $DB.sequelize.query(..., ...)
+    - pattern-not: $DB.sequelize.query("...", ...)
