@@ -1,0 +1,13 @@
+rules:
+- id: eval-exec
+  message: |
+    Detected the use of `eval` or `exec`.
+  severity: WARNING
+  languages:
+  - python
+  patterns:
+    - pattern-either:
+      - pattern: eval(...)
+      - pattern: exec(...)
+    - pattern-not: eval("...")
+    - pattern-not: exec("...")
