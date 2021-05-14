@@ -1,0 +1,19 @@
+rules:
+- id: node-serialize
+  message: |
+    Detected the usage of the `node-serialize` library which could result in RCE.
+  severity: WARNING
+  languages:
+  - javascript
+  - typescript
+  patterns:
+    - pattern-either:
+      - pattern: $M.serialize(...)
+      - pattern: $M.unserialize(...)
+    - pattern-either:
+      - pattern-inside: |
+          require('node-serialize')
+          ...
+      - pattern-inside: |
+          import 'node-serialize'
+          ...
