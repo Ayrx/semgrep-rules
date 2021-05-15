@@ -1,7 +1,7 @@
 rules:
 - id: eval-exec
   message: |
-    Detected the use of `eval` or `exec`.
+    Detected the non-literal use of `eval` or `exec`.
   severity: WARNING
   languages:
   - python
