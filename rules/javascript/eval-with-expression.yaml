@@ -10,12 +10,9 @@ rules:
     - pattern-either:
       - pattern: eval(...)
       - pattern: window.eval(...)
-      - pattern: Function(..., $OBJ)
-      - pattern: new Function(..., $OBJ)
+      - pattern: Function(...)
+      - pattern: new Function(...)
     - pattern-not: eval("...")
     - pattern-not: window.eval("...")
     - pattern-not: Function(..., "...")
     - pattern-not: new Function(..., "...")
-    - pattern-not-inside: |
-        $OBJ = "..."
-        ...
