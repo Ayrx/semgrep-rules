@@ -1,0 +1,21 @@
+rules:
+- id: tarfile-path-traversal
+  message: |
+    Detected a potential path traversal vulnerability if source tar archive can be attacker-controlled.
+  severity: WARNING
+  languages:
+  - python
+  pattern-either:
+    - pattern: tarfile.open(...).extract(...)
+    - pattern: tarfile.open(...).extractall(...)
+    - patterns:
+      - pattern-either:
+        - pattern: $TAR.extract(...)
+        - pattern: $TAR.extractall(...)
+      - pattern-either:
+        - pattern-inside: |
+            $TAR = tarfile.open(...)
+            ...
+        - pattern-inside: |
+            with tarfile.open(...) as $TAR:
+                ...
