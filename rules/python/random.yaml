@@ -1,7 +1,8 @@
 rules:
 - id: random
-  message: |
-    Detected use of the `random` module.
+  message: >
+    Detected use of the `random` module which may result in vulnerabilities if
+    used in a security-sensitive context.
   severity: INFO
   languages:
   - python
