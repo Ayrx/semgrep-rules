@@ -1,0 +1,16 @@
+rules:
+- id: random
+  message: |
+    Detected use of the `random` module.
+  severity: INFO
+  languages:
+  - python
+  patterns:
+    - pattern-either:
+      - pattern: random.$FUNC(...)
+      - patterns:
+        - pattern: $R.$FUNC(...)
+        - pattern-inside: |
+            $R = random.Random()
+            ...
+    - pattern-not: random.SystemRandom(...)
