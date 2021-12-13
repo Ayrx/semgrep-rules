@@ -1,0 +1,8 @@
+rules:
+- id: request-mapping
+  message: |
+    Detected Spring Framework @RequestMapping
+  severity: INFO
+  languages:
+  - java
+  pattern: "@RequestMapping(...)"
